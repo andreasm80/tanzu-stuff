@@ -53,6 +53,44 @@ spec:
 #            data: MTLtMT1C...MT0tPg==
 ```
 
+Workload cluster example for vSphere 8:
+```
+apiVersion: cluster.x-k8s.io/v1beta1
+kind: Cluster
+metadata:
+  name: wdc-2-tkc-cluster-1
+  namespace: wdc-2-ns-1
+spec:
+  clusterNetwork:
+    services:
+      cidrBlocks: ["20.10.0.0/16"]
+    pods:
+      cidrBlocks: ["20.20.0.0/16"]
+    serviceDomain: "cluster.local"
+  topology:
+    class: tanzukubernetescluster
+    version: v1.23.8---vmware.2-tkg.2-zshippable
+    controlPlane:
+      replicas: 1
+      metadata:
+        annotations:
+          run.tanzu.vmware.com/resolve-os-image: os-name=ubuntu
+    workers:
+      machineDeployments:
+        - class: node-pool
+          name: node-pool-01
+          replicas: 3
+          metadata:
+            annotations:
+              run.tanzu.vmware.com/resolve-os-image: os-name=ubuntu
+    variables:
+      - name: vmClass
+        value: best-effort-medium
+      - name: storageClass
+        value: vsan-default-storage-policy
+```
+
+
 ```
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
