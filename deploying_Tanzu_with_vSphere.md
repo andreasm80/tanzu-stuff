@@ -1,0 +1,1 @@
+deploying_Tanzu_with_vSphere.md
