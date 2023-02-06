@@ -141,4 +141,10 @@ subjects:
   apiGroup: rbac.authorization.k8s.io
 ```
 
-
+Auhtentication to ns and ns and tkc cluster:
+```
+kubectl-vsphere login --server=10.102.7.11 --insecure-skip-tls-verify --vsphere-username=supervisor-manager@cpod-nsxam-wdc.az-wdc.cloud-garage.net --tanzu-kubernetes-cluster-namespace wdc-2-ns-1
+```
+```
+kubectl-vsphere login --server=10.102.7.11 --insecure-skip-tls-verify --vsphere-username=supervisor-manager@cpod-nsxam-wdc.az-wdc.cloud-garage.net --tanzu-kubernetes-cluster-namespace wdc-2-ns-1 --tanzu-kubernetes-cluster-name=wdc-2-tkc-cluster-1
+```
