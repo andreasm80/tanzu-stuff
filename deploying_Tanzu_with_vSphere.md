@@ -90,7 +90,31 @@ spec:
         value: vsan-default-storage-policy
 ```
 
+AntreaCOnfig example to apply on the namespace:
+```
+apiVersion: cni.tanzu.vmware.com/v1alpha1
+kind: AntreaConfig
+metadata:
+  name: wdc-2-tkc-cluster-1-antrea-package
+  namespace: wdc-2-ns-1
+spec:
+  antrea:
+    config:
+      featureGates:
+        AntreaProxy: true
+        EndpointSlice: false
+        AntreaPolicy: true
+        FlowExporter: false
+        Egress: true
+        NodePortLocal: true
+        AntreaTraceflow: true
+        NetworkPolicyStats: true
+```
 
+
+
+
+PSP ClusterRole
 ```
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
